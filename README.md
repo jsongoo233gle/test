@@ -2,17 +2,17 @@
 
 ## 目录
 - [Config](#config "Config")
- - [Git](#git)
- - [Maven](#maven)
- - [Node.js](#node.js)
- - [GVim](#gvim)
- - [IntelliJIdea](#intellijidea)
- - [Atom](#atom)
- - [Python](#python)
- - [Environment Variables](#environment-variables)
+  - [Git](#git)
+  - [Maven](#maven)
+  - [Node.js](#node.js)
+  - [GVim](#gvim)
+  - [IntelliJIdea](#intellijidea)
+  - [Atom](#atom)
+  - [Python](#python)
+  - [Environment Variables](#environment-variables)
 - [附](#附 "附")
- - [tree D(APP)](#tree-dapp)
- - [tree E(DATA)](tree-edata)
+  - [tree D(APP)](#tree-dapp)
+  - [tree E(DATA)](tree-edata)
 
 ## Config
 >- ### Git
