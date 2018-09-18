@@ -2,13 +2,14 @@
 
 ## 目录
 - [Config](#config "Config")
-  >- [Git](#git)
-  >- [Maven](#maven)
-  >- [Node.js](#nodejs)
-  >- [GVim](#gvim)
-  >- [IntelliJIdea](#intellijidea)
-  >- [Atom](#atom)
-  >- [Python](#python)
+  > - [Git](#git)
+  > - [Maven](#maven)
+  > - [Node.js](#node.js)
+  > - [GVim](#gvim)
+  > - [Emacs](#emacs)
+  > - [IntelliJIdea](#intellijidea)
+  > - [Atom](#atom)
+  > - [Python](#python)
   - [Environment Variables](#environment-variables)
     - [System variables](#system-variables)
     - [User variables](#user-variables)
@@ -17,23 +18,61 @@
   - [tree E(DATA)](#tree-edata)
 
 ## [Config](#目录)
->- ### [Git](#目录)
+> - ### [Git](#目录)
   ```
-  .git
+  .gitconfig
   .gitignoreglobal
-  
-  # fix 233
+  .git/
   ```
->- ### [Maven](#目录)
->- ### [Node.js](#目录)
->- ### [GVim](#目录)
->- ### [IntelliJIdea](#目录)
+> - ### [Maven](#目录)
   ```
-  .IntelliJIdea2018.2
+  .m2/
   ```
->- ### [Atom](#目录)
->- ### [Python](#目录)
->- ### [Environment Variables](#目录)
+> - ### [Node.js](#目录)
+  ```
+  .npmrc
+  ```
+> - ### [GVim](#目录)
+
+  ```
+  .spacevim
+  .vimrc
+  .vim/
+  .space-vim/
+  .fzf/
+
+  D:\DevOps\Editor\Vim\_vimrc中乱码相关配置
+    # fix: 文件内内容显示乱码
+    set encoding=utf-8
+    set fileencodings=utf-8,gbk,gb18030,gk2312
+
+    # fix: 菜单文字显示乱码
+    source $VIMRUNTIME\delmenu.vim
+    source $VIMRUNTIME\menu.vim
+
+    # fix: consle输出显示乱码
+    language messages zh_CN.utf-8
+  ```
+> - ### [Emacs](#目录)
+  ```
+  AppData/Roaming/.emacs
+  AppData\Roaming\.emacs.d\elpa\
+  AppData\Roaming\.emacs.d\lisp\
+  AppData\Roaming\.emacs.d\org\
+  ```
+> - ### [IntelliJIdea](#目录)
+  ```
+  .IntelliJIdea2018.2/
+  ```
+> - ### [Atom](#目录)
+  ```
+  .atom/
+  ```
+> - ### [Python](#目录)
+  ```
+  pip/
+  ```
+> - ### [Environment Variables](#目录)
 Variable\Env|System|User
 :-:|:-|-:
 Path|%GIT_HOME%\cmd;<br>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;%M2_HOME%\bin;<br>D:\DevOps\Lang\Python\;D:\DevOps\Lang\Python\Scripts\;<br>%NODE_HOME%;<br>%MYSQL_HOME%\bin;%MONGODB_HOME%\bin;<br>%CURL_HOME%\src;%ARIA2_HOME%;%FFmpeg_HOME%\bin;<br>%EXT_PATH%;<br>C:\ProgramData\Oracle\Java\javapath;<br>C:\WINDOWS\system32;C:\WINDOWS;<br>C:\WINDOWS\System32\Wbem;<br>C:\WINDOWS\System32\WindowsPowerShell\v1.0\;<br>C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;<br>%SystemRoot%\system32;%SystemRoot%;<br>%SystemRoot%\System32\Wbem;<br>%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;<br>%SYSTEMROOT%\System32\OpenSSH\; | D:\DevOps\Lang\Python\Scripts\;<br>D:\DevOps\Lang\Python\;<br>C:\Users\gson\AppData\Local\Programs\Python\Launcher\;<br>D:\DevOps\Other\Fiddler;<br>D:\DevOps\Lang\Node.js\node-win-x64\node_global;<br>C:\Users\gson\AppData\Local\Microsoft\WindowsApps;<br>C:\Users\gson\AppData\Local\atom\bin;
