@@ -10,23 +10,25 @@
   >- [Atom](#atom)
   >- [Python](#python)
   - [Environment Variables](#environment-variables)
+    - [System variables](#system-variables)
+    - [User variables](#user-variables)
 - [附](#附 "附")
   - [tree D(APP)](#tree-dapp)
   - [tree E(DATA)](tree-edata)
 
 ## Config
 >- ### Git
-    ```
-    .git
-    .gitignoreglobal
-    ```
+  ```
+  .git
+  .gitignoreglobal
+  ```
 >- ### Maven
 >- ### Node.js
 >- ### GVim
 >- ### IntelliJIdea
-    ```
-    .IntelliJIdea2018.2
-    ```
+  ```
+  .IntelliJIdea2018.2
+  ```
 >- ### Atom
 >- ### Python
 >- ### Environment Variables
@@ -34,7 +36,7 @@ Variable\Env|System|User
 :-:|:-|-:
 Path|%GIT_HOME%\cmd;<br>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;%M2_HOME%\bin;<br>D:\DevOps\Lang\Python\;D:\DevOps\Lang\Python\Scripts\;<br>%NODE_HOME%;<br>%MYSQL_HOME%\bin;%MONGODB_HOME%\bin;<br>%CURL_HOME%\src;%ARIA2_HOME%;%FFmpeg_HOME%\bin;<br>%EXT_PATH%;<br>C:\ProgramData\Oracle\Java\javapath;<br>C:\WINDOWS\system32;C:\WINDOWS;<br>C:\WINDOWS\System32\Wbem;<br>C:\WINDOWS\System32\WindowsPowerShell\v1.0\;<br>C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;<br>%SystemRoot%\system32;%SystemRoot%;<br>%SystemRoot%\System32\Wbem;<br>%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;<br>%SYSTEMROOT%\System32\OpenSSH\; | D:\DevOps\Lang\Python\Scripts\;<br>D:\DevOps\Lang\Python\;<br>C:\Users\gson\AppData\Local\Programs\Python\Launcher\;<br>D:\DevOps\Other\Fiddler;<br>D:\DevOps\Lang\Node.js\node-win-x64\node_global;<br>C:\Users\gson\AppData\Local\Microsoft\WindowsApps;<br>C:\Users\gson\AppData\Local\atom\bin;
 - Path
-  - System variables
+  - #### System variables
     - GIT_HOME
     ```
     D:\DevOps\VCS\PortableGit
@@ -105,7 +107,7 @@ Path|%GIT_HOME%\cmd;<br>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;%M2_HOME%\bin;<br>D:
     %SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;
     %SYSTEMROOT%\System32\OpenSSH\;
     ```
-  - User variables
+  - #### User variables
     - Path
     ```
     D:\DevOps\Lang\Python\Scripts\;
@@ -116,10 +118,10 @@ Path|%GIT_HOME%\cmd;<br>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;%M2_HOME%\bin;<br>D:
     C:\Users\gson\AppData\Local\Microsoft\WindowsApps;
     C:\Users\gson\AppData\Local\atom\bin;
     ```
-    
+
 ---
 ## ~~附~~
->### tree D(APP)
+### tree D(APP)
 ```
 D:.
 ├─App
@@ -144,7 +146,7 @@ D:.
 │      └─VMware VMs
 └─Temp
 ```
->### tree E(DATA)
+### tree E(DATA)
 ```
 E:.
 ├─Bakup
