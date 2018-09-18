@@ -1,5 +1,7 @@
 # ***Config for Win***
-
+- Path
+  - System variables
+    - GIT_HOME
 ## 目录
 - [Config](#config "Config")
   - [Git](#git)
