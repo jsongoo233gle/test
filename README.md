@@ -4,7 +4,7 @@
 - [Config](#config "Config")
   >- [Git](#git)
   >- [Maven](#maven)
-  >- [Node.js](#node.js)
+  >- [Node.js](#nodejs)
   >- [GVim](#gvim)
   >- [IntelliJIdea](#intellijidea)
   >- [Atom](#atom)
