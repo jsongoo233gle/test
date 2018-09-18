@@ -41,7 +41,7 @@ D:\DevOps\VCS\PortableGit
 ```
     - JAVA_HOME
 ```
-    D:\DevOps\Lang\Java\JDK9\jdk-9.0.4
+D:\DevOps\Lang\Java\JDK9\jdk-9.0.4
 ```
     - CLASSPATH
 ```
