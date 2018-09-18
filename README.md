@@ -39,52 +39,52 @@ Path|%GIT_HOME%\cmd;<br>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;%M2_HOME%\bin;<br>D:
 ```
 D:\DevOps\VCS\PortableGit
 ```
-    - JAVA_HOME
+   - JAVA_HOME
 ```
 D:\DevOps\Lang\Java\JDK9\jdk-9.0.4
 ```
-    - CLASSPATH
+   - CLASSPATH
 ```
 .;%JAVA_HOME%\lib;
 ```
-    - M2_HOME
+   - M2_HOME
 ```
 D:\DevOps\Build\maven\apache-maven-3.5.4
 ```
-    - NODE_HOME
+  - NODE_HOME
 ```
 D:\DevOps\Lang\Node.js\node-win-x64
 ```
-    - NODE_PATH
+  - NODE_PATH
 ```
 %NODE_HOME%\node_global\node_modules
 ```
-    - MYSQL_HOME
+  - MYSQL_HOME
 ```
 D:\DevOps\DB\MySQL\mysql-5.7.21-winx64
 ```
-    - MONGODB_HOME
+  - MONGODB_HOME
 ```
 D:\DevOps\DB\MongoDB\Server\3.6
 ```
-    - EXT_PATH
+  - EXT_PATH
 ```
 %HOMEPATH%\Desktop\ExtPath;
 %USERPROFILE%\Desktop\ExtPath;
 ```
-    - CURL_HOME
+  - CURL_HOME
 ```
 D:\DevOps\Other\curl-7.61.1-win64-mingw
 ```
-    - ARIA2_HOME
+  - ARIA2_HOME
 ```
 D:\DevOps\Other\aria2-1.33.1-win-64bit-build1
 ```
-    - FFmpeg_HOME
+  - FFmpeg_HOME
 ```
 D:\DevOps\Other\ffmpeg-4.0.2-win64-static
 ```
-    - Path
+  - Path
 ```
 %GIT_HOME%\cmd;
 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
