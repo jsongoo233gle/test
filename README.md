@@ -1,10 +1,10 @@
-# ***Config for Win***
+# ***Config Files for Win***
 
 ## 目录
-- [Config](#config "Config")
+- [Config Files](#config-files "Config Files")
   > - [Git](#git)
   > - [Maven](#maven)
-  > - [Node.js](#node.js)
+  > - [Node.js](#nodejs)
   > - [GVim](#gvim)
   > - [Emacs](#emacs)
   > - [IntelliJIdea](#intellijidea)
@@ -17,10 +17,11 @@
   - [tree D(APP)](#tree-dapp)
   - [tree E(DATA)](#tree-edata)
 
-## [Config](#目录)
+## [Config Files](#目录)
 > - ### [Git](#目录)
   ```
   .gitconfig
+  .gitignore
   .gitignoreglobal
   .git/
   ```
