@@ -81,6 +81,7 @@ Path|%GIT_HOME%\cmd;<br>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;%M2_HOME%\bin;<br>D:
   - #### [System variables](#目录)
   <details>
   <summary>View contents</summary>
+  
     - GIT_HOME
     ```
     D:\DevOps\VCS\PortableGit
@@ -151,10 +152,12 @@ Path|%GIT_HOME%\cmd;<br>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;%M2_HOME%\bin;<br>D:
     %SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;
     %SYSTEMROOT%\System32\OpenSSH\;
     ```
+    
   </details>
   - #### [User variables](#目录)
   <details>
   <summary>View contents</summary>
+  
     - Path
     ```
     D:\DevOps\Lang\Python\Scripts\;
@@ -165,6 +168,7 @@ Path|%GIT_HOME%\cmd;<br>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;%M2_HOME%\bin;<br>D:
     C:\Users\gson\AppData\Local\Microsoft\WindowsApps;
     C:\Users\gson\AppData\Local\atom\bin;
     ```
+    
   </details>
 
 ---
