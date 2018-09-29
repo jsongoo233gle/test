@@ -80,8 +80,8 @@ Path|%GIT_HOME%\cmd;<br>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;%M2_HOME%\bin;<br>D:
 - Path
   - #### [System variables](#目录)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;<details>
-   <summary>View contents</summary>
+   <details>
+   <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View contents</summary>
 
     - GIT_HOME
     ```
