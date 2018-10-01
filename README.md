@@ -1,4 +1,4 @@
 Html
-: test
+:  test
 json
-: json
+:   json
