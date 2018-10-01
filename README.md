@@ -11,7 +11,7 @@ Agent pid 3240
 $ ssh-add
 Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)
 ```
-编缉/etc/ssh/ssh_config文件: ForwardAgent yes
+编缉/etc/ssh/ssh_config文件: `ForwardAgent yes`
 让ssh-agent能转发,这样就可以这样登陆了:node—->host1—->host2,到此请注意,如果host1上没有设定转发的话就登不了host2了,设定了转发后可以进一步跳到host2上了.
 ```
 [root@node ~]#ssh host1
@@ -21,8 +21,8 @@ Last login: Thu Oct 18 16:21:29 2007 from node
 Last login: Thu Oct 18 16:20:28 2007 from node
 [root@host2 root]# 
 ```
-到这里基本上已经大功告成了,还有一个小问题那就是总不能每次都手动运行ssh-agent吧!最省事的方法就是将它写到profile中去. 
-可以在/etc/profile.d下建一个ssh-agent.sh文件.
+到这里基本上已经大功告成了,还有一个小问题那就是总不能每次都手动运行ssh-agent吧!最省事的方法就是将它写到profile中去.  
+可以在/etc/profile.d下建一个ssh-agent.sh文件.  
 这样就不会生成太多的ssh-agent程序了,而且支持GUI环境.当打开一个终端时:
 ```
 Stale agent file found. Spawning new agent...
