@@ -112,7 +112,7 @@ $ pstree
 ssh-agent启动时高速缓存是空的,里面不会有解密的专用密钥.在我们真能使用ssh-agent之前,首先还需要使用ssh-add命令把我们的专用密钥添加到ssh-agent的高速缓存中以备使用.
 ssh-add命令的使用方法非常简单,示例如下:
 `ssh-add  ~/.ssh/id_rsa_custom`
-上述命令表示将私钥id_rsa_custom加入到ssh代理中,如果你没有正确的启动ssh-agent,那么你在执行ssh-add命令时,可能会出现如下错误提示:
+上述命令表示将私钥id_rsa_custom加入到ssh代理中,如果你没有正确的启动ssh-agent,那么你在执行ssh-add命令时,可能会出现如下错误提示:  
 `Could not open a connection to your authentication agent.`
 完成上述步骤后,ssh代理即可帮助我们管理id_rsa_custom密钥了,那么有哪些具体的使用场景呢，我们继续聊.
 一旦您已经用ssh-add把专用密钥(或多个密钥)添加到ssh-agent的高速缓存中,并在当前的shell中(如果您在~/.bash_profile中启动ssh-agent,情况应当是这样)定义SSH_AUTH_SOCK,那么您可以使用scp和ssh同远程系统建立连接而不必提供密码短语.
