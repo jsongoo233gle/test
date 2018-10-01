@@ -60,7 +60,8 @@ Last login: Sat Sep 29 10:21:32 2007 from node
 - ssh-agent $SHELL  
   创建子shell,在子shell中运行ssh-agent进程,退出子shell自动结束代理.
 - eval \`ssh-agent\`  
-  单独启动一个代理进程,退出当前shell时最好使用`ssh-agent -k`关闭对应代理
+  单独启动一个代理进程,退出当前shell时最好使用`ssh-agent -k`关闭对应代理.
+  
 当我们使用"ssh-agent $SHELL"命令时,会在当前shell中启动一个默认shell,作为当前shell的子shell,ssh-agent程序会在子shell中运行,当执行"ssh-agent $SHELL"命令后,我们也会自动进入到新创建的子shell中,centos中默认shell通常为bash,所以,在centos中上述命令通常可以直接写为ssh-agent bash,当然,如果你的默认shell已经指定为其他shell,比如csh,那么你也可以直接使用ssh-agent csh,效果都是相同的,我们来实验一下.
 当前使用的centos系统的默认shell为bash,在未启动ssh-agent程序时,我们在当前bash中执行pstree命令,查看sshd的进程树,如下:
 ```
@@ -81,8 +82,8 @@ $ pstree
 │      │                    └─ssh-agent
 │      └─sshd───sftp-server
 ```
-在原来的bash中新生成了一个子bash,ssh-agnet运行在子bash中,我们的命令也同样在子bash中执行.
-此时,在当前会话中,我们已经可以使用ssh-agent了,ssh-agent会随着当前ssh会话的消失而消失,这也是一种安全机制,比如,退出当前子shell,再次查看进程树.
+在原来的bash中新生成了一个子bash,ssh-agnet运行在子bash中,我们的命令也同样在子bash中执行.  
+此时,在当前会话中,我们已经可以使用ssh-agent了,ssh-agent会随着当前ssh会话的消失而消失,这也是一种安全机制,比如,退出当前子shell,再次查看进程树,
 找到sshd的进程树,如下,如果你操作的非常快,可能会在与sshd进程平级的区域看到一个还没有来得及关闭的ssh-agent进程,但是最终sshd的进程树如下图所示:
 ```
 $ exit
@@ -92,8 +93,8 @@ $ pstree
 ├─sshd─┬─sshd───bash───pstree
 │      └─sshd───sftp-server
 ```
-可以看到ssh-agent已经不再存在了,如果你的服务器中开启了图形化环境,使用"ps -ef | grep ssh-agent"命令查找ssh-agent进程,仍然能够看到一个ssh-agent进程,这个ssh-agent进程是跟随图形化界面开机启动的,但是通常,服务器中很少会开启图形化界面,所以我们不用在意它.
-虽然我们已经知道了怎样启动ssh-agent,但是,如果想让ssh代理帮助我们管理密钥,还需要将密钥添加到ssh代理中,这个话题一会儿再聊.
+可以看到ssh-agent已经不再存在了,如果你的服务器中开启了图形化环境,使用"ps -ef | grep ssh-agent"命令查找ssh-agent进程,仍然能够看到一个ssh-agent进程,这个ssh-agent进程是跟随图形化界面开机启动的,但是通常,服务器中很少会开启图形化界面,所以我们不用在意它.  
+虽然我们已经知道了怎样启动ssh-agent,但是,如果想让ssh代理帮助我们管理密钥,还需要将密钥添加到ssh代理中,这个话题一会儿再聊.  
 刚才执行了ssh-agent $SHELL命令,现在试试eval \`ssh-agent\` 命令.
 ```
 $ eval `ssh-agent`
@@ -114,7 +115,7 @@ ssh-add命令的使用方法非常简单,示例如下:
 `ssh-add  ~/.ssh/id_rsa_custom`  
 上述命令表示将私钥id_rsa_custom加入到ssh代理中,如果你没有正确的启动ssh-agent,那么你在执行ssh-add命令时,可能会出现如下错误提示:  
 `Could not open a connection to your authentication agent.`  
-完成上述步骤后,ssh代理即可帮助我们管理id_rsa_custom密钥了,那么有哪些具体的使用场景呢，我们继续聊.  
+完成上述步骤后,ssh代理即可帮助我们管理id_rsa_custom密钥了,那么有哪些具体的使用场景呢,我们继续聊.  
 一旦您已经用ssh-add把专用密钥(或多个密钥)添加到ssh-agent的高速缓存中,并在当前的shell中(如果您在~/.bash_profile中启动ssh-agent,情况应当是这样)定义SSH_AUTH_SOCK,那么您可以使用scp和ssh同远程系统建立连接而不必提供密码短语.
 
 **ssh代理帮助我们选择对应的私钥进行认证**
@@ -124,8 +125,7 @@ ssh-add命令的使用方法非常简单,示例如下:
 ```
 eval $(ssh-agent) > /dev/null
 ```
-但是这有一个问题,问题就是每次打开我们的shell,我们都会创建一个新的ssh-agent,久而久之我们就有好多个ssh-agent在跑了,并且每次启动一个新的,我们都需要通过ssh-add来添加我们的key,这并不是我们想要的.
-
+但是这有一个问题,问题就是每次打开我们的shell,我们都会创建一个新的ssh-agent,久而久之我们就有好多个ssh-agent在跑了,并且每次启动一个新的,我们都需要通过ssh-add来添加我们的key,这并不是我们想要的.  
 让我们先来看一下ssh-agent是如何工作的：
 ```
 $ ssh-agent 
@@ -138,10 +138,10 @@ $ ps x | grep ssh-agent
 26521 ?        Ss     0:00 ssh-agent
 26540 pts/5    S+     0:00 grep --color=auto ssh-agent
 ```
-我们可以从第一个命令中得到$SSH_AUTH_SOCK and $SSH_AGENT_PID.
-其中,$SSH_AGENT_PID,这个就是ssh-agent的id,我们可以通过ssh-agent -k $SSH_AGENT_PID来干掉它;
-$SSH_AUTH_SOCK,这个环境变量非常重要,如果这个变量有问题,你无法使用ssh-add命令来添加私钥.
-我们也可以在多个shell中使用同一个ssh-agent,但是我们需要手动设定环境变量$SSH_AUTH_SOCK.通过调用ssh-find-agent.sh脚本来进行设置.
+我们可以从第一个命令中得到$SSH_AUTH_SOCK and $SSH_AGENT_PID.  
+其中,$SSH_AGENT_PID,这个就是ssh-agent的id,我们可以通过ssh-agent -k $SSH_AGENT_PID来干掉它;  
+$SSH_AUTH_SOCK,这个环境变量非常重要,如果这个变量有问题,你无法使用ssh-add命令来添加私钥.  
+我们也可以在多个shell中使用同一个ssh-agent,但是我们需要手动设定环境变量$SSH_AUTH_SOCK.通过调用ssh-find-agent.sh脚本来进行设置.  
 编辑`.bashrc`文件,加入如下配置,这样就不会每次都创建新的ssh-agent了.
 ```
 source ~/ssh-find-agent.sh
