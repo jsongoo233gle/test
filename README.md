@@ -104,17 +104,17 @@ $ pstree
 ├─sshd─┬─sshd───bash───pstree
 │      └─sshd───sftp-server
 ```
-可以看到,ssh-agent进程已经启动了,此刻,如果我们退出当前bash,此ssh-agent进程并不会自动关闭,所以,我们应该在退出当前bash之前,手动的关闭这个进程,在当前bash中,使用`ssh-agent -k`命令可以关闭对应的ssh-agent进程,但是,如果在退出了当前bash以后再使用`ssh-agent -k`命令,是无法关闭对应的ssh-agent进程的,除非使用kill命令,当然,其实在使用`ssh-agent $SHELL`命令时,也可以使用`ssh-agent -k`命令关闭ssh代理.
-事实上ssh-agent的输出是一系列bash命令,如果这些命令被执行,则将设置两个环境变量:SSH_AUTH_SOCK和SSH_AGENT_PID.内含的export命令使这些环境变量对之后运行的任何附加命令都可用.如果shell真对这些行进行计算,这一切才会发生,但是此时它们只是被打印到标准输出(stdout)而已。要使之确定,才像eval \`ssh-agent\`这样调用.
+可以看到,ssh-agent进程已经启动了,此刻,如果我们退出当前bash,此ssh-agent进程并不会自动关闭,所以,我们应该在退出当前bash之前,手动的关闭这个进程,在当前bash中,使用`ssh-agent -k`命令可以关闭对应的ssh-agent进程,但是,如果在退出了当前bash以后再使用`ssh-agent -k`命令,是无法关闭对应的ssh-agent进程的,除非使用kill命令,当然,其实在使用`ssh-agent $SHELL`命令时,也可以使用`ssh-agent -k`命令关闭ssh代理.  
+事实上ssh-agent的输出是一系列bash命令,如果这些命令被执行,则将设置两个环境变量:SSH_AUTH_SOCK和SSH_AGENT_PID.内含的export命令使这些环境变量对之后运行的任何附加命令都可用.如果shell真对这些行进行计算,这一切才会发生,但是此时它们只是被打印到标准输出(stdout)而已.要使之确定,才像eval \`ssh-agent\`这样来调用.  
 启动ssh-agent的最佳方式就是把上面这行添加到您的~/.bash_profile中;这样,在您的登录shell中启动的所有程序都将看到环境变量,而且能够定位ssh-agent，并在需要的时候向其查询密钥.尤其重要的环境变量是SSH_AUTH_SOCK;SSH_AUTH_SOCK包含有ssh和scp可以用来同ssh-agent建立对话的UNIX域套接字的路径.
 ### ssh-add
-好了,我们已经了解了怎样启动ssh代理,以及怎样关闭ssh代理,但是,我们还没有真正的使用过代理,如果想要真正的使用ssh代理帮助我们管理密钥,还需要将密钥添加到代理中,添加密钥需要使用到ssh-add命令.
-ssh-agent启动时高速缓存是空的,里面不会有解密的专用密钥.在我们真能使用ssh-agent之前,首先还需要使用ssh-add命令把我们的专用密钥添加到ssh-agent的高速缓存中以备使用.
-ssh-add命令的使用方法非常简单,示例如下:
-`ssh-add  ~/.ssh/id_rsa_custom`
+好了,我们已经了解了怎样启动ssh代理,以及怎样关闭ssh代理,但是,我们还没有真正的使用过代理,如果想要真正的使用ssh代理帮助我们管理密钥,还需要将密钥添加到代理中,添加密钥需要使用到ssh-add命令.  
+ssh-agent启动时高速缓存是空的,里面不会有解密的专用密钥.在我们真能使用ssh-agent之前,首先还需要使用ssh-add命令把我们的专用密钥添加到ssh-agent的高速缓存中以备使用.  
+ssh-add命令的使用方法非常简单,示例如下:  
+`ssh-add  ~/.ssh/id_rsa_custom`  
 上述命令表示将私钥id_rsa_custom加入到ssh代理中,如果你没有正确的启动ssh-agent,那么你在执行ssh-add命令时,可能会出现如下错误提示:  
 `Could not open a connection to your authentication agent.`  
-完成上述步骤后,ssh代理即可帮助我们管理id_rsa_custom密钥了,那么有哪些具体的使用场景呢，我们继续聊.
+完成上述步骤后,ssh代理即可帮助我们管理id_rsa_custom密钥了,那么有哪些具体的使用场景呢，我们继续聊.  
 一旦您已经用ssh-add把专用密钥(或多个密钥)添加到ssh-agent的高速缓存中,并在当前的shell中(如果您在~/.bash_profile中启动ssh-agent,情况应当是这样)定义SSH_AUTH_SOCK,那么您可以使用scp和ssh同远程系统建立连接而不必提供密码短语.
 
 **ssh代理帮助我们选择对应的私钥进行认证**
@@ -141,7 +141,6 @@ $ ps x | grep ssh-agent
 我们可以从第一个命令中得到$SSH_AUTH_SOCK and $SSH_AGENT_PID.
 其中,$SSH_AGENT_PID,这个就是ssh-agent的id,我们可以通过ssh-agent -k $SSH_AGENT_PID来干掉它;
 $SSH_AUTH_SOCK,这个环境变量非常重要,如果这个变量有问题,你无法使用ssh-add命令来添加私钥.
-
 我们也可以在多个shell中使用同一个ssh-agent,但是我们需要手动设定环境变量$SSH_AUTH_SOCK.通过调用ssh-find-agent.sh脚本来进行设置.
 编辑`.bashrc`文件,加入如下配置,这样就不会每次都创建新的ssh-agent了.
 ```
