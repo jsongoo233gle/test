@@ -57,9 +57,9 @@ Last login: Sat Sep 29 10:21:32 2007 from node
 但是这三台server之间并没有并没有保存彼此的公钥,而且我也不可能将自己的私钥存放到server上(不安全),因此彼此之间没有公钥进 行认证(可以密码认证,但是这样慢,经常输密码,烦且密码太多容易忘).如果我们启用ssh-agent,问题就可以迎刃而解了.
 从这个agent我们就知道这是一个代理,代理什么呢?代理我们的私钥,这个ssh-agent可以在我们的后台运行,然后我们可以通过ssh-add将我们的key加入到后台运行的ssh-agent中,这样,我们就可以使用我们的key并且不需要每次都输入密码了,如何启动呢?
 首先,如果想要使用ssh代理,我们则需要先启动ssh代理,也就是启动ssh-agent程序,如下两条命令都可以启动代理,但是略有不同.
-- ssh-agent $SHELL
+- ssh-agent $SHELL 
   创建子shell,在子shell中运行ssh-agent进程,退出子shell自动结束代理.
-- eval \`ssh-agent\`
+- eval \`ssh-agent\` 
   单独启动一个代理进程,退出当前shell时最好使用`ssh-agent -k`关闭对应代理
 当我们使用"ssh-agent $SHELL"命令时,会在当前shell中启动一个默认shell,作为当前shell的子shell,ssh-agent程序会在子shell中运行,当执行"ssh-agent $SHELL"命令后,我们也会自动进入到新创建的子shell中,centos中默认shell通常为bash,所以,在centos中上述命令通常可以直接写为ssh-agent bash,当然,如果你的默认shell已经指定为其他shell,比如csh,那么你也可以直接使用ssh-agent csh,效果都是相同的,我们来实验一下.
 当前使用的centos系统的默认shell为bash,在未启动ssh-agent程序时,我们在当前bash中执行pstree命令,查看sshd的进程树,如下:
